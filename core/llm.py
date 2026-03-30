@@ -1,19 +1,19 @@
-try:
-    from mistralai import Mistral
-except ImportError:
-    raise ImportError("❌ Biblioteca mistralai não instalada. Verifique o requirements.txt")
+from openai import OpenAI
+import streamlit as st
 
-from config import MISTRAL_API_KEY, MODEL_NAME
+# pega chave do mistral
+api_key = st.secrets["MISTRAL_API_KEY"]
 
-if not MISTRAL_API_KEY:
-    raise ValueError("❌ MISTRAL_API_KEY não encontrada.")
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://api.mistral.ai/v1"
+)
 
-client = Mistral(api_key=MISTRAL_API_KEY)
+MODEL_NAME = "mistral-small-latest"
 
 SYSTEM_PROMPT = """
 Você é um assistente virtual inteligente.
 """
-
 
 def generate_response(user_input, context="", memory=""):
     try:
@@ -30,7 +30,7 @@ Pergunta:
 Resposta:
 """
 
-        response = client.chat.complete(
+        response = client.chat.completions.create(
             model=MODEL_NAME,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
