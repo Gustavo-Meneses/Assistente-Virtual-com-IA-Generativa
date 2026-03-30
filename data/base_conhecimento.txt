@@ -1,1 +1,7 @@
+A empresa XPTO oferece serviços de análise de dados, inteligência artificial e automação.
 
+Nosso assistente virtual utiliza processamento de linguagem natural para responder perguntas.
+
+Tecnologias utilizadas incluem Python, Machine Learning e Deep Learning.
+
+Também oferecemos consultoria em ciência de dados e engenharia de dados.
