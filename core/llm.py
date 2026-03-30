@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from openai import OpenAI
 from config import OPENAI_API_KEY, MODEL_NAME
 
