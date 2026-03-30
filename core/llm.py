@@ -1,4 +1,8 @@
-from mistralai import Mistral
+try:
+    from mistralai import Mistral
+except ImportError:
+    raise ImportError("❌ Biblioteca mistralai não instalada. Verifique o requirements.txt")
+
 from config import MISTRAL_API_KEY, MODEL_NAME
 
 if not MISTRAL_API_KEY:
@@ -8,11 +12,6 @@ client = Mistral(api_key=MISTRAL_API_KEY)
 
 SYSTEM_PROMPT = """
 Você é um assistente virtual inteligente.
-
-Regras:
-- Seja claro e objetivo
-- Use o contexto fornecido
-- Se não souber, diga que não tem certeza
 """
 
 
